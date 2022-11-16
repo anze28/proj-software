@@ -25,5 +25,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <li class="nav-item">
       <a class="nav-link" href="#">Link 3</a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" href="<?php echo site_url("Ctrl_bienvenida/index");?>">Evento</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="<?php echo site_url("Ctrl_evento/index");?>">Otros</a>
+    </li>
   </ul>
 </nav>

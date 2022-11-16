@@ -11,7 +11,7 @@ class Ctrl_evento extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('View_evento');
+		$this->load->view('evento/View_menu');
 	}
 	
 }

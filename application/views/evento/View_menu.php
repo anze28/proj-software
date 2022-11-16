@@ -7,6 +7,9 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Si llega a la vista de eventos</h1>
+    //parte del codigo de vista de anze
+    <div class= "w3-container">
+        <h1>Si llega a la vista de eventos</h1>
+    </div>
 </body>
 </html>
