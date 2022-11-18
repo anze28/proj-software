@@ -17,19 +17,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <nav class="navbar navbar-expand-sm bg-light">
   <ul class="navbar-nav">
     <li class="nav-item">
-      <a class="nav-link" href="<?php echo site_url("Ctrl_bienvenida/index");?>">Inicio</a>
+      <a class="nav-link" href="<?php echo site_url("Ctrl_evento/index");?>">Evento</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="<?php echo site_url("Ctrl_despedida/index");?>">Despedida</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link 3</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="<?php echo site_url("Ctrl_bienvenida/index");?>">Evento</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="<?php echo site_url("Ctrl_evento/index");?>">Otros</a>
+      <a class="nav-link" href="<?php echo site_url("Ctrl_evento/vista_evento");?>">Crear Evento</a>
     </li>
   </ul>
 </nav>
