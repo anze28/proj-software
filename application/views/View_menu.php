@@ -41,15 +41,100 @@
     <div class= "container">
         <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Crear Evento</button>
+                <a type="button" class="btn btn-primary" href="<?php echo site_url("Ctrl_evento/vista_evento");?>" target="_blank">Crear Evento</a>
         </form>
     </div>
-    <div class="container">
-        <a href="/html/teoria-inventarios/eoq-faltantes.html" class="bottom-info"> 
-            <P>Misa de julio</P>
-            <p>misa</p>
-        </a>
+    <div class="container" id="tabla_eventos">
     </div>
+    
+
+    <script type="text/javascript">
+        listar_eventos();
+
+
+        function listar_eventos(){
+        $.ajax({
+            method:"POST",
+            url:"<?php echo site_url("Ctrl_evento/obtener_todos_los_eventos");?>",
+            data:{
+            },
+            success: function(eventos){
+            crear_tabla_eventos(eventos);
+            },
+            dataType:'json'
+        });
+
+        }
+
+        function crear_tabla_eventos(eventos){
+            if(eventos.length >0)
+            {
+
+            var tabla_dinamica="<table class='table table-striped'>";
+            tabla_dinamica+="";
+            
+            tabla_dinamica+="<tr>";
+            
+            tabla_dinamica+="<th>Titulo</th>";
+            tabla_dinamica+="<th>Tipo</th>";
+            tabla_dinamica+="<th>Fecha de inicio</th>";
+            tabla_dinamica+="<th>Fecha de Finalizacion</th>";
+            tabla_dinamica+="<th>Acciones</th>";
+            tabla_dinamica+="</tr>";
+            
+            var i;
+            for(i=0;i<eventos.length;i++)
+            {
+                tabla_dinamica+="<tr>";
+                
+                tabla_dinamica+="<td>"+eventos[i].titulo_evento+"</td>";
+                if(eventos[i].id_tipo_evento==1)
+                    tabla_dinamica+="<td>"+"Misa"+"</td>";
+                if(eventos[i].id_tipo_evento==2)
+                    tabla_dinamica+="<td>"+"Visita"+"</td>";
+                if(eventos[i].id_tipo_evento==3)
+                    tabla_dinamica+="<td>"+"Viaje"+"</td>";
+                tabla_dinamica+="<td>"+eventos[i].fecha_inicio+"</td>";
+                tabla_dinamica+="<td>"+eventos[i].fecha_finalizacion+"</td>";
+                tabla_dinamica+="<td>";
+                tabla_dinamica+="<button class='btn btn-outline-success btn-lg' onclick=\"ver_evento('"+eventos[i].id_evento+"')\">Mas</button>";
+                tabla_dinamica+="<button class='btn btn-outline-danger btn-lg' onclick=\"eliminar_evento('"+eventos[i].id_evento+"')\">Eliminar</button>";
+                tabla_dinamica+="</td>";
+                tabla_dinamica+="</tr>";
+            }
+            tabla_dinamica+="</table>";
+            $("#tabla_eventos").html(tabla_dinamica);
+            
+            }
+            else
+            {
+                $("#tabla_eventos").html('<div class="alert alert-info"><strong> No hay eventos que mostrar<strong></div>');
+            }
+        }
+
+
+        function ver_evento($id)
+        {
+            alert($id);
+        }
+
+
+        function eliminar_evento(id){
+            $.ajax({
+                method:"POST",
+                url:"<?php echo site_url("Ctrl_evento/eliminar_evento");?>",
+                data:{
+                vid :id
+                },
+                success: function(){
+                listar_eventos();
+                },
+
+            });
+
+        }
+
+    </script>
     
 
 </body>

@@ -10,53 +10,38 @@ class Mdl_evento extends CI_MODEL
     function insertar_evento($parametros)
     {
         $campos= array(
-            'nombres'=> $parametros['cnombre'],
-            'apellidop'=> $parametros['capellidop'],
-            'apellidom'=> $parametros['capellidom']
+            'titulo_evento'=> $parametros['ctitulo'],
+            'id_tipo_evento'=> $parametros['ctipo'],
+            'fecha_inicio'=> $parametros['cfecha_inicio'],
+            'fecha_finalizacion'=> $parametros['cfecha_final'],
+            'lugar'=> $parametros['clugar'],
+            'descripcion_de_evento'=> $parametros['cdescripcion'],
+            'fecha_reg'=> $parametros['cfecha_reg'],
+            'borrado'=> $parametros['cborrado'],
+            'id_usuario'=> $parametros['cusuario'],
+            'id_usuario_reg'=> $parametros['cusuario_reg'],
         );
-        echo $parametros['cnombre'];
-        $this->db->insert('persona',$campos);     
-    }
-
-    function modificar_persona($parametros)
-    {
-        $id =$parametros['cid'];
-        $campos= array(
-            'nombres'=> $parametros['cnombre'],
-            'apellidop'=> $parametros['capellidop'],
-            'apellidom'=> $parametros['capellidom']
-        );
-        $this->db->where('id', $id);
-        $this->db->update('persona', $campos);
+        $this->db->insert('p_evento',$campos);     
     }
 
 
-    function obtener_persona_all()
-    {
-        $consulta="Select * from p_persona;";
-        $resultado= $this->db->query($consulta);
-        return $resultado->result_array();
-    }
-
-    function obtener_persona_by($parametros)
+    function obtener_eventos()
     {
         $this->db->select('*');
-        $this->db->from('persona');
-        $this->db->like('nombres', $parametros['cnombre']);
-        $this->db->like('apellidop', $parametros['capellidop']);
-        $this->db->like('apellidom', $parametros['capellidom']);
+        $this->db->from('p_evento');
+        $this->db->where('borrado', 'N');
         $query = $this->db->get();
         return $query->result_array();
     }
 
-    function eliminar_persona($id)
+    function eliminar_evento($id)
     {
-        
-        $consulta="Delete from persona where id= '".$id."';" ;
-        $this->db->query($consulta);
-        
+        $campos= array(
+            'borrado'=>'S'
+        );
+        $this->db->where('id_evento',$id);
+        $this->db->update('p_evento',$campos);
     }
 
-
-
+    
 }

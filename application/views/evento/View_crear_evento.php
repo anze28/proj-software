@@ -42,14 +42,14 @@
             <form>
                 <div class="form-group">
                     <label>Titulo de Evento</label>
-                    <input type="email" class="form-control" id="txb_titulo" placeholder="Ingrese el titulo de evento">
+                    <input type="text" class="form-control" id="txb_titulo" placeholder="Ingrese el titulo de evento">
                 </div>
                 <div class="form-group">
                     <label>Tipo de Evento</label>
                     <select class="form-control " id="txb_tipo">
-                        <option>Misa</option>
-                        <option>Visita</option>
-                        <option>Viaje</option>
+                        <option value="1">Misa</option>
+                        <option value="2">Visita</option>
+                        <option value="3">Viaje</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -62,51 +62,54 @@
                 </div>
                 <div class="form-group">
                     <label>Lugar de Evento</label>
-                    <input type="email" class="form-control" id="txb_lugar" placeholder="Ingrese el lugar del evento">
+                    <input type="text" class="form-control" id="txb_lugar" placeholder="Ingrese el lugar del evento">
                 </div>
 
                 <div class="form-group">
                     <label>Descripcion</label>
                     <textarea class="form-control" rows="3" id="txb_descripcion"></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Limpiar</button>
-                <button type="submit" class="btn btn-primary" onclick="guardar_evento()">Crear</button>
             </form>
+            <button type="submit" class="btn btn-primary" onclick="limpiar_campos()">Limpiar</button>
+            <button type="submit" class="btn btn-primary" onclick="guardar_evento()">Crear</button>
         </div>
 <script type="text/javascript">
 
 function guardar_evento(){
     $.ajax({
     method:"POST",
-    url:"<?php echo site_url("Ctrl_bienvenida/guardar");?>",
+    url:"<?php echo site_url("Ctrl_evento/guardar");?>",
     data:{
       vtitulo :$("#txb_titulo").val(),
-      vapellidop :$("#txb_apellidoP").val(),
-      vapellidom :$("#txb_apellidoM").val()
+      vtipo :$("#txb_tipo").val(),
+      vfecha_ini :$("#txb_fecha_inicio").val(),
+      vfecha_fin :$("#txb_fecha_final").val(),
+      vlugar :$("#txb_lugar").val(),
+      vdescripcion :$("#txb_descripcion").val(),
+      vusuario : 1,
+      vusuario_reg : 1 
     },
     success: function(){
-      limpiar_campos();
+        limpiar_campos();
     },
 
 });
 
 }
 
-function guardar(){
-  $.ajax({
-    method:"POST",
-    url:"<?php echo site_url("Ctrl_bienvenida/guardar");?>",
-    data:{
-      vnombre :$("#txb_nombre").val(),
-      vapellidop :$("#txb_apellidoP").val(),
-      vapellidom :$("#txb_apellidoM").val()
-    },
-    success: function(){
-      limpiar_campos();
-    },
+function ver_descripcion()
+{
+    alert($("#txb_descripcion").val())
+}
 
-});
 
+function limpiar_campos(){
+  $("#txb_titulo").val("");
+  $("#txb_tipo").val("");
+  $("#txb_fecha_inicio").val("");
+  $("#txb_fecha_final").val("");
+  $("#txb_lugar").val("");
+  $("#txb_descripcion").val("");
 }
 
 

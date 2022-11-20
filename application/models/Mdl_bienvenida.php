@@ -30,7 +30,6 @@ class Mdl_bienvenida extends CI_MODEL
         
         
     $this->db->where('id', $id);
-
     $this->db->update('persona', $campos);
 
 
