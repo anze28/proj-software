@@ -70,7 +70,7 @@ class Mdl_curso extends CI_MODEL
 
     function buscar_curso($cbuscar_curso)
     {
-        $consulta = "Select * from p_curso where titulo_curso like '%$cbuscar_curso%'";
+        $consulta = "Select * from p_curso where borrado = 'N' AND titulo_curso like '%$cbuscar_curso%'";
         $resultado = $this->db->query($consulta);
         return $resultado->result_array();
 
@@ -121,6 +121,7 @@ class Mdl_curso extends CI_MODEL
     function eliminar_persona($id)
     {
         
+        
         $consulta="Delete from persona where id= '".$id."';" ;
         $this->db->query($consulta);
         
@@ -129,7 +130,7 @@ class Mdl_curso extends CI_MODEL
     function eliminar_curso($id)
     {
         
-        $consulta="Delete from p_curso where id_curso= '".$id."';" ;
+        $consulta="Update p_curso SET borrado = 'S' where id_curso='".$id."';" ;
         $this->db->query($consulta);
         
     }

@@ -9,7 +9,7 @@
     </form>
     <button class="btn btn-outline-success btn-lg" onclick="buscar_curso()">buscar</button>
 
-    <td><button type='button' class="btn btn-outline-success btn-lg"data-toggle='modal' data-target='#ventana_actualizar' id="editar_bien">crear evento</button></td>     
+    <td><button type='button' class="btn btn-outline-success btn-lg" data-toggle='modal' data-target='#ventana_actualizar' id="editar_bien">crear curso</button></td>     
     
  
 </div>
@@ -64,7 +64,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cerrar</font></font></button>
-        <button type="button" class="btn btn-success"  onclick = "guardar_curso();" data-dismiss="modal"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Guardar</font></font></button>
+        <button type="button" class="btn btn-success"  onclick = "guardar_actualizar_curso();" data-dismiss="modal"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Guardar</font></font></button>
       </div>
     </div>
 </div>

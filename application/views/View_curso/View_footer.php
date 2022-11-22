@@ -1,7 +1,7 @@
 <script type="text/javascript">
-$auxiliar_id = 0;
+$auxiliar_id = 'default';
 $id_usuario = 1;
-$default = 'Default';
+$default = 'default';
 $borrado ='N';
 
 listar_cursos();
@@ -283,7 +283,9 @@ function guardar_curso(){
       vtitulo :$("#txb_titulo").val()
     },
     success: function(){
+    
       listar_cursos();
+
     },
 
 });
@@ -336,7 +338,10 @@ function editar(id,nombre,apellidop,apellidom){
   $("#txb_apellidoM").val(apellidom);
 }
 
+function modificar_curso(){
+$auxiliar_id = $default;
 
+}
 
 function eliminar(id){
   $.ajax({
@@ -370,17 +375,18 @@ function eliminar_curso(id){
 
 }
 
-function guardar_actualizar()
+function guardar_actualizar_curso()
 {
-  
-  var id = $("#txb_id").val().length;
-  if(id == 0){
-    guardar();
+  var id = $auxiliar_id;
+  if(id == 'default'){
+    guardar_curso();
   }else{
-    modificar();
+
+    modificar_curso();
   }
-  $("#txb_id").val("");
-  listar_personas();
+ 
+
+
 }
 
 
