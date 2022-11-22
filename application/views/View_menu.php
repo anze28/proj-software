@@ -28,7 +28,7 @@
                     <a class="nav-link active" aria-current="page" href="#">Eventos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Cursos</a>
+                    <a class="nav-link active" aria-current="page" href="<?php echo site_url("Ctrl_curso/index");?>">Cursos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Inscripciones</a>
