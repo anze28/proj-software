@@ -11,10 +11,9 @@ class Ctrl_curso extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('components/navbar');
+		$this->load->view('View_curso/View_head');
 		$this->load->view('View_curso/View_curso');
 		$this->load->view('View_curso/View_footer');
-		$this->load->view('components/footer');
 		
 	}
 	
@@ -62,35 +61,29 @@ class Ctrl_curso extends CI_Controller {
 	}
 
 
-	public function guardar_curso()
+	public function guardar_curso_nuevo()
 
 	{
-		$idusuario=$this->input->post('vidusuario');
-		$idsacramento=$this->input->post('vidsacramento');
-		$idcurso=$this->input->post('vidcurso');
-		$idtipocurso=$this->input->post('vidtipocurso');
-		$fechainicio=$this->input->post('vfechainicio');
-		$fechafinal=$this->input->post('vfechafinal');
+		$id_usuario=$this->input->post('vid_usuario');
+		$id_sacramento=$this->input->post('vid_sacramento');
+		$id_curso=$this->input->post('vid_curso');
+		$id_tipo_curso=$this->input->post('vid_tipo_curso');
+		$fecha_inicio=$this->input->post('vfecha_inicio');
+		$fecha_final=$this->input->post('vfecha_final');
 		$descripcion=$this->input->post('vdescripcion');
 		$id_usuario_reg=$this->input->post('vid_usuario_reg');
-		$fecha_reg=$this->input->post('vfecha_reg');
-		$borrado=$this->input->post('vborrado');
-		$titulo=$this->input->post('vtitulo');
+		$titulo_curso=$this->input->post('vtitulo_curso');
 
-		$parametros['cidusuario']=$idusuario;
-		$parametros['cidsacramento']=$idsacramento;
-		$parametros['cidcurso']=$idcurso;
-		$parametros['cidtipocurso']=$idtipocurso;
-		$parametros['cfechainicio']=$fechainicio;
-		$parametros['cfechafinal']=$fechafinal;
+		$parametros['cid_usuario']=$id_usuario;
+		$parametros['cid_sacramento']=$id_sacramento;
+		$parametros['cid_curso']=$id_curso;
+		$parametros['cid_tipo_curso']=$id_tipo_curso;
+		$parametros['cfecha_inicio']=$fecha_inicio;
+		$parametros['cfecha_final']=$fecha_final;
 		$parametros['cdescripcion']=$descripcion;
 		$parametros['cid_usuario_reg']=$id_usuario_reg;
-		$parametros['cfecha_reg']=$fecha_reg;
-		$parametros['cborrado']=$borrado;
-		$parametros['ctitulo']=$titulo;
+		$parametros['ctitulo_curso']=$titulo_curso;
 
-
-		
 
 
 		$this->Mdl_curso->insertar_curso($parametros);
@@ -98,23 +91,29 @@ class Ctrl_curso extends CI_Controller {
 
 
 
-	public function modificar()
+	public function modificar_curso()
 	{
-		$id=$this->input->post('vid');
-		$nombre=$this->input->post('vnombre');
-		$apellidop=$this->input->post('vapellidop');
-		$apellidom=$this->input->post('vapellidom');
+		$id_usuario=$this->input->post('vid_usuario');
+		$id_sacramento=$this->input->post('vid_sacramento');
+		$id_curso=$this->input->post('vid_curso');
+		$id_tipo_curso=$this->input->post('vid_tipo_curso');
+		$fecha_inicio=$this->input->post('vfecha_inicio');
+		$fecha_final=$this->input->post('vfecha_final');
+		$descripcion=$this->input->post('vdescripcion');
+		$titulo_curso=$this->input->post('vtitulo_curso');
 
-		$parametros['cid']=$id;	
-		$parametros['cnombre']=$nombre;
-		$parametros['capellidop']=$apellidop;
-		$parametros['capellidom']=$apellidom;
+		$parametros['cid_usuario']=$id_usuario;
+		$parametros['cid_sacramento']=$id_sacramento;
+		$parametros['cid_curso']=$id_curso;
+		$parametros['cid_tipo_curso']=$id_tipo_curso;
+		$parametros['cfecha_inicio']=$fecha_inicio;
+		$parametros['cfecha_final']=$fecha_final;
+		$parametros['cdescripcion']=$descripcion;
+		$parametros['cid_usuario_reg']=$id_usuario_reg;
+		$parametros['ctitulo_curso']=$titulo_curso;
 
 
-		
-
-
-		$this->Mdl_curso->modificar_persona($parametros);
+		$this->Mdl_curso->modificar_curso_seguro($parametros);
 	}
 
 
@@ -157,6 +156,14 @@ class Ctrl_curso extends CI_Controller {
 	{
 		echo json_encode($this->Mdl_curso->obtener_sacramento_all());		
 	}
+
+
+	public function obtener_tipo_curso()
+	{
+		echo json_encode($this->Mdl_curso->obtener_tipo_curso_all());		
+	}
+
+
 	public function obtener_todas_las_personas_by()
 	{
 		$nombre=$this->input->post('vnombre');

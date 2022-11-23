@@ -7,24 +7,15 @@ class Mdl_curso extends CI_MODEL
         parent ::__construct();
     }    
 
+   
     function insertar_curso($parametros)
     {
-        $campos= array(
-            'id_usuario'=> $parametros['cidusuario'],
-            'id_sacramento'=> $parametros['cidsacramento'],
-            'id_curso'=> $parametros['cidcurso'],
-            'id_tipo_curso'=> $parametros['cidtipocurso'],
-            'fecha_inicio'=> $parametros['cfechainicio'],
-            'fecha_final'=> $parametros['cfechafinal'],
-            'descripcion_curso'=> $parametros['cdescripcion'],
-            'id_usuario_reg'=> $parametros['cid_usuario_reg'],
-            'fecha_reg'=> $parametros['cfecha_reg'],
-            'borrado'=> $parametros['cborrado'],
-            'titulo_curso'=> $parametros['ctitulo']
-        );
-       
-        $this->db->insert('p_curso',$campos);     
+        
+        $consulta = "insert into p_curso values(".$parametros['cid_usuario'].",".$parametros['cid_sacramento'].",null,".$parametros['cid_tipo_curso'].",'".$parametros['cfecha_inicio']."',
+        '".$parametros['cfecha_final']."','".$parametros['cdescripcion']."',".$parametros['cid_usuario_reg'].",NOW(),'N','".$parametros['ctitulo_curso']."');" ;
+        $this->db->query($consulta); 
     }
+
 
     function insertar_persona($parametros)
     {
@@ -47,30 +38,20 @@ class Mdl_curso extends CI_MODEL
         $this->db->insert('p_sacramento',$campos);     
     }
 
-    function modificar_persona($parametros)
+    function modificar_curso_seguro($parametros)
     {
-        $id =$parametros['cid'];
-        $campos= array(
-            'nombres'=> $parametros['cnombre'],
-            'apellidop'=> $parametros['capellidop'],
-            'apellidom'=> $parametros['capellidom']
-        );
+        $consulta = "update p_curso set id_usuario=".$parametros['cid_usuario'].", id_sacramento=".$parametros['cid_sacramento'].", id_tipo_curso=".$parametros['cid_tipo_curso'].", fecha_inicio='".$parametros['cfecha_inicio']."', fecha_final='".$parametros['cfecha_final']."', descripcion_curso='".$parametros['cdescripcion']."', titulo_curso='".$parametros['ctitulo_curso']."' where id_curso=".$parametros['cid_curso'].";";
         
-        
-        
-    $this->db->where('id', $id);
-
-    $this->db->update('persona', $campos);
-
-
-
-
-
+        $this->db->query($consulta); 
     }
+
+    
+
+
 
     function buscar_curso($cbuscar_curso)
     {
-        $consulta = "Select * from p_curso where borrado = 'N' AND titulo_curso like '%$cbuscar_curso%'";
+        $consulta = "select C.id_curso, C.id_sacramento, C.id_tipo_curso, C.titulo_curso, T.tipo_curso, S.tipo_sacramento, C.descripcion_curso, C.fecha_inicio, C.fecha_final from p_sacramento as S join p_curso as C on S.id_sacramento=C.id_sacramento join p_tipo_curso as T on C.id_tipo_curso=T.id_tipo_curso where C.borrado = 'N' AND C.titulo_curso like '%$cbuscar_curso%'";
         $resultado = $this->db->query($consulta);
         return $resultado->result_array();
 
@@ -84,7 +65,7 @@ class Mdl_curso extends CI_MODEL
     }
     function obtener_curso_all()
     {
-        $consulta="Select * from p_curso where borrado = 'N';";
+        $consulta="select C.id_curso,  C.id_sacramento, C.id_tipo_curso, C.titulo_curso, T.tipo_curso, S.tipo_sacramento, C.descripcion_curso, C.fecha_inicio, C.fecha_final from p_sacramento as S join p_curso as C on S.id_sacramento=C.id_sacramento join p_tipo_curso as T on C.id_tipo_curso=T.id_tipo_curso where C.borrado='N';";
         $resultado= $this->db->query($consulta);
         return $resultado->result_array();
     }
@@ -101,12 +82,21 @@ class Mdl_curso extends CI_MODEL
         return $resultado->result_array();
     }
 
-      function obtener_sacramento_all()
+    function obtener_sacramento_all()
     {
-        $consulta="Select * from p_sacramento;";
+        $consulta="Select * from p_sacramento where borrado='N';";
         $resultado= $this->db->query($consulta);
         return $resultado->result_array();
     }
+
+    function obtener_tipo_curso_all()
+    {
+        $consulta="Select * from p_tipo_curso where borrado='N';";
+        $resultado= $this->db->query($consulta);
+        return $resultado->result_array();
+    }
+
+
     function obtener_persona_by($parametros)
     {
         $this->db->select('*');

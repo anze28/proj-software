@@ -5,23 +5,28 @@ $default = 'default';
 $borrado ='N';
 
 listar_cursos();
-
+listar_sacramentos();
+listar_tipo_curso();
 /*
 listar_eventos();
 listar_inscripciones();
-listar_sacramentos();*/
+*/
 
 
-function auxiliar_id($id_curso,$id_sacramento,$id_tipo_curso,$fecha_inicio,$fecha_final,$descripcion_curso,$titulo){
-$auxiliar_id = $id_curso;
+function auxiliar_id($id_curso,$id_sacramento,$id_tipo_curso,$fecha_inicio,$fecha_final,$descripcion_curso,$titulo, $tipo_curso, $tipo_sacramento)
+{
+//$auxiliar_id = $id_curso;
 
+
+$("#txb_id_curso").val($id_curso);
 $("#txb_id_sacramento").val($id_sacramento);
 $("#txb_id_tipo_curso").val($id_tipo_curso);
-$("#txb_fecha_inicio").val($fecha_inicio);
-$("#txb_fecha_final").val($fecha_final);
+$("#txb_fecha_inicio_curso").val($fecha_inicio);
+$("#txb_fecha_final_curso").val($fecha_final);
 $("#txb_descripcion_curso").val($descripcion_curso);
-$("#txb_titulo").val($titulo);
+$("#txb_titulo_curso").val($titulo);
 $("#editar_bien").click();
+
 }
 
 
@@ -47,52 +52,94 @@ function listar_sacramentos(){
     data:{
     },
     success: function(sacramentos){
-      crear_tabla_sacramentos(sacramentos);
+      crear_tabla_sacramento(sacramentos)
     },
     dataType:'json'
 });
-
 }
 
 
-function crear_tabla_sacramentos(sacramentos){
+function crear_tabla_sacramento(sacramentos)
+{
     if(sacramentos.length >0)
     {
-     
-      var tabla_dinamica="<table class='table table-striped'>";
-      tabla_dinamica+="";
       
-      tabla_dinamica+="<tr>";
-      
-      tabla_dinamica+="<th>id_sacramento</th>";
-      tabla_dinamica+="<th>tipo sacramento</th>";
-      tabla_dinamica+="<th>borrado</th>";
-      tabla_dinamica+="<th>Acciones</th>";
-      tabla_dinamica+="</tr>";
-      
+      var tabla_dinamica="<option value='9999'>Seleccionar sacramento</option>";
       var i;
       for(i=0;i<sacramentos.length;i++)
       {
-        tabla_dinamica+="<tr>";
-        
-        tabla_dinamica+="<td>"+sacramentos[i].id_sacramento+"</td>";
-        tabla_dinamica+="<td>"+sacramentos[i].tipo_sacramento+"</td>";
-        tabla_dinamica+="<td>"+sacramentos[i].borrado+"</td>";
-        tabla_dinamica+="<td>";
-        tabla_dinamica+="<button class='btn btn-outline-success btn-lg' onclick=\"eliminar('" +sacramentos[i].id_usuario+ "')\">Eliminar</button>";
-        tabla_dinamica+="<button class='btn btn-outline-danger btn-lg' onclick=\"editar('" +sacramentos[i].id_usuario+"')\">editar</button>";
-        tabla_dinamica+="</td>";
-        tabla_dinamica+="</tr>";
-      }
-      tabla_dinamica+="</table>";
-      $("#tabla_sacramentos").html(tabla_dinamica);
       
-    }
+        tabla_dinamica += "<option value = "+sacramentos[i].id_sacramento+"> "+sacramentos[i].tipo_sacramento+" </option>";
+      
+      }
+      tabla_dinamica += "</select>";
+      $("#tabla_sacramentos").html(tabla_dinamica);
+    }   
     else
     {
-        $("#tabla_sacramentos").html('<div class="alert alert-info"><strong> No hay datos que mostrar<strong></div>');
+      {
+        var tabla_dinamica="<option value='9999'>No hay sacramentos creados</option>";
+        tabla_dinamica += "</select>";
+        $("#tabla_sacramentos").html(tabla_dinamica);
+      }
     }
-}
+  }
+
+
+  function listar_tipo_curso()
+  {
+  $.ajax(
+    {
+      method:"POST",
+      url:"<?php echo site_url("Ctrl_curso/obtener_tipo_curso");?>",
+      data:
+      {
+      },
+      success: function(tipos_curso)
+      {
+        crear_tabla_tipo_curso(tipos_curso)
+      },
+      dataType:'json'
+    });
+  }
+
+
+  function crear_tabla_tipo_curso(tipos_curso)
+  {
+    if(tipos_curso.length >0)
+    {
+      var tabla_dinamica="<option value='9999'>Seleccionar el tipo de curso</option>";
+      var i;
+      for(i=0;i<tipos_curso.length;i++)
+      {
+      
+        tabla_dinamica += "<option value = "+tipos_curso[i].id_tipo_curso+"> "+tipos_curso[i].tipo_curso+" </option>";
+      
+      }
+      tabla_dinamica += "</select>";
+      $("#tabla_tipos_curso").html(tabla_dinamica);
+    }   
+    else
+    {
+      {
+        var tabla_dinamica="<option value='9999'>No hay tipos de cursos creados</option>";
+        tabla_dinamica += "</select>";
+        $("#tabla_tipos_curso").html(tabla_dinamica);
+      }
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 function listar_inscripciones(){
@@ -225,35 +272,35 @@ function listar_cursos(){
 function crear_tabla_curso(cursos){
     if(cursos.length >0)
     {
-     
-      var tabla_dinamica="<table class='table table-striped'>";
+
+      var tabla_dinamica="<table class='table table-dark table-hover'>";
       tabla_dinamica+="";
-      
       tabla_dinamica+="<tr>";
-      
-      tabla_dinamica+="<th>titulo</th>";
-      tabla_dinamica+="<th>fecha_inicio</th>";
-      tabla_dinamica+="<th>fecha_final</th>";
-      tabla_dinamica+="<th>descripcion_curso</th>";
-  
-      tabla_dinamica+="<th></th>";
-      tabla_dinamica+="<th></th>";
+      tabla_dinamica+="<th>Título del curso</th>";
+      tabla_dinamica+="<th>Tipo de curso</th>";
+      tabla_dinamica+="<th>Sacramento</th>";
+      tabla_dinamica+="<th>Descripción</th>";
+      tabla_dinamica+="<th>Fecha de inicio</th>";
+      tabla_dinamica+="<th>Fecha final</th>";
+      tabla_dinamica+="<th>Acciones</th>";
       tabla_dinamica+="</tr>";
       
       var i;
       for(i=0;i<cursos.length;i++)
       {
         tabla_dinamica+="<tr>";
-        
         tabla_dinamica+="<td>"+cursos[i].titulo_curso+"</td>";
+        tabla_dinamica+="<td>"+cursos[i].tipo_curso+"</td>";
+        tabla_dinamica+="<td>"+cursos[i].tipo_sacramento+"</td>";
+        tabla_dinamica+="<td>"+cursos[i].descripcion_curso+"</td>";
         tabla_dinamica+="<td>"+cursos[i].fecha_inicio+"</td>";
         tabla_dinamica+="<td>"+cursos[i].fecha_final+"</td>";
-        tabla_dinamica+="<td>"+cursos[i].descripcion_curso+"</td>";
+       
         tabla_dinamica+="<td>";
-        tabla_dinamica+="<button class='btn btn-outline-success btn-lg' onclick=\"eliminar_curso('" +cursos[i].id_curso+ "')\">Eliminar</button>";
-        tabla_dinamica+="<td><button class='btn btn-outline-success btn-lg' onclick=\"auxiliar_id('" +cursos[i].id_curso+ "','"+cursos[i].id_sacramento+"','"+cursos[i].id_tipo_curso+"','"+cursos[i].fecha_inicio+"','"+cursos[i].fecha_final+"','"+cursos[i].descripcion_curso+"','"+cursos[i].titulo_curso+"')\">editar</button></td>";
-       tabla_dinamica+="</td>";
-        tabla_dinamica+="</tr>";
+        tabla_dinamica+="<button class='btn btn-outline-danger btn-lg' onclick=\"eliminar_curso('" +cursos[i].id_curso+ "')\">Eliminar</button>";
+        tabla_dinamica+="<button class='btn btn-outline-success btn-lg' onclick=\"auxiliar_id('" +cursos[i].id_curso+"','"+cursos[i].id_sacramento+"','"+cursos[i].id_tipo_curso+"','"+cursos[i].fecha_inicio+"','"+cursos[i].fecha_final+"','"+cursos[i].descripcion_curso+"','"+cursos[i].titulo_curso+"','"+cursos[i].tipo_curso+"','"+cursos[i].tipo_sacramento+"')\">Editar</button>";
+        tabla_dinamica+="</td>";
+        tabla_dinamica+="</tr>";                                                                                                                                          
       }
       tabla_dinamica+="</table>";
       $("#tabla_cursos").html(tabla_dinamica);
@@ -266,30 +313,46 @@ function crear_tabla_curso(cursos){
 }
 
 function guardar_curso(){
-  $.ajax({
+
+  if($("#txb_id_curso").val()=="")
+  {
+  $.ajax(
+    {
     method:"POST",
-    url:"<?php echo site_url("Ctrl_curso/guardar_curso");?>",
-    data:{
-      vidusuario :$id_usuario,
-      vidsacramento :$("#txb_id_sacramento").val(),
-      vidcurso : 'Default',
-      vidtipocurso :$("#txb_id_tipo_curso").val(),
-      vfechainicio :$("#txb_fecha_inicio").val(),
-      vfechafinal :$("#txb_fecha_final").val(),
+    url:"<?php echo site_url("Ctrl_curso/guardar_curso_nuevo");?>",
+    data:
+    {
+      vid_usuario :1,
+      vid_sacramento :$("select#tabla_sacramentos").val(),
+      vid_tipo_curso :$("select#tabla_tipos_curso").val(),
+      vfecha_inicio :$("#txb_fecha_inicio_curso").val(),
+      vfecha_final :$("#txb_fecha_final_curso").val(),
       vdescripcion :$("#txb_descripcion_curso").val(),
-      vid_usuario_reg :$id_usuario,
-      vfecha_reg :'NOW()',
-      vborrado :$borrado,
-      vtitulo :$("#txb_titulo").val()
+      vid_usuario_reg :1,
+      vtitulo_curso :$("#txb_titulo_curso").val()
     },
     success: function(){
-    
+      limpiar_campos();
       listar_cursos();
-
     },
 
-});
+    });
+  }
+  else
+  {
+    modificar_curso();
+  }
+}
 
+function limpiar_campos(){
+  listar_tipo_curso();
+  listar_sacramentos();
+  
+  $("#txb_id_curso").val("");
+  $("#txb_fecha_inicio_curso").val("");
+  $("#txb_fecha_final_curso").val("");
+  $("#txb_descripcion_curso").val("");
+  $("#txb_titulo_curso").val("");
 }
 
 
@@ -331,6 +394,8 @@ function guardar(){
 
 
 
+
+
 function editar(id,nombre,apellidop,apellidom){
   $("#txb_id").val(id);
   $("#txb_nombre").val(nombre);
@@ -339,7 +404,28 @@ function editar(id,nombre,apellidop,apellidom){
 }
 
 function modificar_curso(){
-$auxiliar_id = $default;
+$.ajax(
+    {
+    method:"POST",
+    url:"<?php echo site_url("Ctrl_curso/modificar_curso");?>",
+    data:
+    {
+      vid_usuario :1,
+      vid_sacramento :$("select#tabla_sacramentos").val(),
+      vid_tipo_curso :$("select#tabla_tipos_curso").val(),
+      vid_curso :$("#txb_id_curso").val(),
+      vfecha_inicio :$("#txb_fecha_inicio_curso").val(),
+      vfecha_final :$("#txb_fecha_final_curso").val(),
+      vdescripcion :$("#txb_descripcion_curso").val(),
+      vid_usuario_reg :1,
+      vtitulo_curso :$("#txb_titulo_curso").val()
+    },
+    success: function(){
+      limpiar_campos();
+      listar_cursos();
+    },
+
+    });
 
 }
 
@@ -375,19 +461,6 @@ function eliminar_curso(id){
 
 }
 
-function guardar_actualizar_curso()
-{
-  var id = $auxiliar_id;
-  if(id == 'default'){
-    guardar_curso();
-  }else{
-
-    modificar_curso();
-  }
- 
-
-
-}
 
 
 

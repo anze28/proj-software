@@ -32,39 +32,52 @@
         </button>
       </div>
       <div class="modal-body">
-        <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ingrese los datos para actualizar</font></font></p>
-     
-        <div class="form-group">
-      <label for="txb_id_sacramento"> id id_sacramento:</label>
-      <input type="text" class="form-control" id="txb_id_sacramento">
+        <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ingrese los datos para guardar</font></font></p>
+     <input type="hidden" class="form-control" id="txb_id_cursop">
+
+     <div class="form-group">
+     <input type="hidden" class="form-control" id="txb_id_curso">
     </div>
+
     <div class="form-group">
-      <label for="txb_id_tipo_curso">id_tipo_curso:</label>
-      <input type="text" class="form-control" id="txb_id_tipo_curso">
+      <label for="txb_titulo_curso">Título:</label>
+      <input type="text" class="form-control" id="txb_titulo_curso">
     </div>
+
     <div class="form-group">
-      <label for="txb_fecha_inicio">fecha_inicio:</label>
-      <input type="text" class="form-control" id="txb_fecha_inicio">
+      <label for="txb_sacramento_curso">Tipo de sacramento:</label>
+      <select name="tabla_sacramentos" class="custom-select" id="tabla_sacramentos">
+      </select>
     </div>
+
     <div class="form-group">
-      <label for="txb_fecha_final">fecha_final:</label>
-      <input type="text" class="form-control" id="txb_fecha_final">
+      <label for="txb_tipo_curso">Tipo de curso:</label>
+      <select name="tabla_tipos_curso" class="custom-select" id="tabla_tipos_curso">
+      </select>
     </div>
+
     <div class="form-group">
-      <label for="txb_descripcion_curso">descripcion_curso:</label>
+      <label for="txb_fecha_inicio_curso">Fecha de inicio:</label>
+      <input type="text" class="form-control" id="txb_fecha_inicio_curso">
+    </div>
+    
+    <div class="form-group">
+      <label for="txb_fecha_final_curso">Fecha final:</label>
+      <input type="text" class="form-control" id="txb_fecha_final_curso">
+    </div>
+
+    <div class="form-group">
+      <label for="txb_descripcion_curso">Descripcion del curso:</label>
       <input type="text" class="form-control" id="txb_descripcion_curso">
     </div>
-    <div class="form-group">
-      <label for="txb_titulo">titulo:</label>
-      <input type="text" class="form-control" id="txb_titulo">
-    </div>
+    
     
     
      
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cerrar</font></font></button>
-        <button type="button" class="btn btn-success"  onclick = "guardar_actualizar_curso();" data-dismiss="modal"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Guardar</font></font></button>
+        <button type="button" class="btn btn-success"  onclick = "guardar_curso();" data-dismiss="modal"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Guardar</font></font></button>
       </div>
     </div>
 </div>
