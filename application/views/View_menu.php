@@ -10,14 +10,30 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <style>
+        *{
+        margin: 0px;
+        padding: 0;
+        box-sizing: border-box;
+        }
+        body{
+        margin: 0;
+        font-family: 'Arenas movedizas'
+        }
+        .navbar{
+            background-color: #E6D7BD;
+        }
+    </style>
+
 </head>
 <body>
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
+<nav class="navbar navbar-expand-sm">
+        
             <a class="navbar-brand" href="#">
-                <img src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24">
+                <img src="https://drive.google.com/file/d/1192edXXUyt3KqENVoNLu3nU3iC-bTa4Y/view?usp=share_link" alt="" width="30" height="24">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -30,15 +46,12 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="<?php echo site_url("Ctrl_curso/index");?>">Cursos</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Inscripciones</a>
-                </li>
             </ul>
             <form class="d-flex">
-                <button class="btn btn-outline-success" type="submit">Login</button>
+                <button class="btn btn-outline-success" type="submit">Log in</button>
             </form>
             </div>
-        </div>
+        
 </nav>
     
 
