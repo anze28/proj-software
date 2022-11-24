@@ -4,5 +4,4 @@
     <p>Esta es otra vista</p>
   </div>
   <p>This is some text.</p>      
-  <p>This is another text.</p>      
 </div>

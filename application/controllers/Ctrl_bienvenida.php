@@ -28,9 +28,10 @@ class Ctrl_bienvenida extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('View_head');
+		$this->load->view('components/navbar');
 		$this->load->view('View_bienvenida');
 		$this->load->view('View_footer');
+		$this->load->view('components/footer');
 		
 	}
 	

@@ -12,8 +12,9 @@ class Ctrl_evento extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('View_head');
+		$this->load->view('components/navbar');
 		$this->load->view('View_menu');
+		$this->load->view('components/footer');
 	}
 
 	public function vista_evento()
