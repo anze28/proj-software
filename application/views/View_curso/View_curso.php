@@ -58,12 +58,12 @@
 
     <div class="form-group">
       <label for="txb_fecha_inicio_curso">Fecha de inicio:</label>
-      <input type="text" class="form-control" id="txb_fecha_inicio_curso">
+      <input type="datetime-local" class="form-control" id="txb_fecha_inicio_curso">
     </div>
     
     <div class="form-group">
       <label for="txb_fecha_final_curso">Fecha final:</label>
-      <input type="text" class="form-control" id="txb_fecha_final_curso">
+      <input type="datetime-local" class="form-control" id="txb_fecha_final_curso">
     </div>
 
     <div class="form-group">

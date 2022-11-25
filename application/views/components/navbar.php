@@ -18,22 +18,20 @@
     display: flex;
     justify-content: space-between;
     padding: 0 24px ;
-    border-bottom: 1px solid var(--very-light-pink);
-    background-color: var(--gris);
+    border-bottom: 1px solid black;
+    background-color: #E6D7BD;
 }
 .menu{
     display: none;
 }
 .logo{
-    height: 50px;
-    width: 100%;
-    margin-top: 5px;
-    
+    height: 60px;
+    width: 100%;    
 }
 .navbar-left ul,
 .navbar-right ul {
     list-style: none;
-    padding: 0;
+    padding: 2px;
     margin: 0;
     display: flex;
     align-items: center;
@@ -50,15 +48,25 @@
 .navbar-left ul li a,
 .navbar-right ul li a {
     text-decoration: none;
-    color: var(--black);
-    border: 0px solid var(--black);
+    color: #382C1E;
+    border: 1px solid #E6D7BD;
     padding: 8px;
+    margin-left: 12px;
     border-radius: 8px;
 }
 .navbar-left ul li a:hover,
 .navbar-right ul li a:hover {
-    color: var(--red);
-    border: 1px solid var(--red);
+    color: var(#E6D7BD);
+    border: 1px solid #382C1E;
+}
+.boton-login{
+    color: #E6D7BD ;
+    border: 1px solid #382C1E;
+}
+.boton-login:hover{
+    color: #382C1E ;
+    border: 1px solid #382C1E;
+    background-color: white;
 }
 </style>
 
@@ -67,7 +75,7 @@
 <nav> 
   <div class="navbar-left">
     <a href="<?php echo site_url("Ctrl_bienvenida/index");?>">
-        <img src="<?php echo site_url("../img/Parroquia.png");?>" alt="logo" class ="logo">
+        <img src="/application/views/components/img/Parroquia.png" alt="logo" class ="logo">
     </a>
   </div>
   <div class="navbar-right">
@@ -77,6 +85,9 @@
         </li>
         <li>
             <a href="<?php echo site_url("Ctrl_evento/index");?>">Evento</a>
+        </li>
+        <li>
+            <a class ="boton-login" href="<?php echo site_url("Ctrl_bienvenida/index");?>">Iniciar Sesión</a>
         </li>
 
     </ul>

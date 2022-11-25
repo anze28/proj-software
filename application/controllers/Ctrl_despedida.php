@@ -13,7 +13,6 @@ class Ctrl_despedida extends CI_Controller {
 	{
 		$this->load->view('components/navbar');
 		$this->load->view('View_despedida');
-		$this->load->view('View_footer');
 		$this->load->view('components/footer');
 		
 	}

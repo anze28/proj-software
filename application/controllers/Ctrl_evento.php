@@ -13,7 +13,8 @@ class Ctrl_evento extends CI_Controller {
 	public function index()
 	{
 		$this->load->view('components/navbar');
-		$this->load->view('View_menu');
+		$this->load->view('View_evento/Style_evento');
+		$this->load->view('View_evento/View_evento');
 		$this->load->view('components/footer');
 	}
 
@@ -107,4 +108,11 @@ class Ctrl_evento extends CI_Controller {
 		$id=$this->input->post('vid');
 		$this->Mdl_evento->eliminar_evento($id);
 	}
+	public function buscar()
+	{
+		$titulo=$this->input->post('vtitulo');
+		echo json_encode($this->Mdl_evento->buscar_evento($titulo));
+ 
+	}
+
 }

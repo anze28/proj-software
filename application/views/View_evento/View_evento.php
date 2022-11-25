@@ -1,13 +1,15 @@
  
 
 
-    <div class = "container">
+    <div class = "container main-container">
+        <div class= "container-buscador">
+            <input class="form-control mr-sm-2" type="search" id= "buscar" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success btn-lg" onclick="buscar_evento()">buscar</button>
+            <button class="btn btn-success" id = "crear_evento" data-toggle="modal" data-target="#ventanaModal">Crear Evento</button>    
+    
+        </div>
 
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-success" type="submit">Buscar</button>
-    <button class="btn btn-success" id = "crear_evento" data-toggle="modal" data-target="#ventanaModal">Crear Evento</button>
-
-
+    
         <div class="modal fade" id="ventanaModal" tabindex = "-1" role="dialog" aria-labelledby="tituloventana" area-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class = "modal-content">
@@ -66,8 +68,11 @@
     
 
 <div class="container" id="tabla_eventos">
-    </div>
+</div>
     
+
+
+
 
     <script type="text/javascript">
         listar_eventos();
@@ -213,7 +218,20 @@
             $("#txb_descripcion").val(descripcion);
             $("#crear_evento").click();
         }
+        function buscar_evento(){
+            $.ajax({
+                method:"POST",
+                url:"<?php echo site_url("Ctrl_evento/buscar");?>",
+                data:{
+                vtitulo : $("#buscar").val()
+                },
+                success: function(eventos_filtrados){
+                    crear_tabla_eventos(eventos_filtrados);
+                },
+                dataType:'json'
+            });
 
+        }
 
 
 
