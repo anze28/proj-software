@@ -12,6 +12,7 @@ class Ctrl_curso extends CI_Controller {
 	public function index()
 	{
 		$this->load->view('components/navbar');
+		$this->load->view('View_curso/Style_curso');
 		$this->load->view('View_curso/View_curso');
 		$this->load->view('View_curso/View_footer');
 		$this->load->view('components/footer');

@@ -275,32 +275,26 @@ function crear_tabla_curso(cursos){
 
       var tabla_dinamica="<table class='table table-dark table-hover'>";
       tabla_dinamica+="";
-      tabla_dinamica+="<tr>";
-      tabla_dinamica+="<th>Título del curso</th>";
-      tabla_dinamica+="<th>Tipo de curso</th>";
-      tabla_dinamica+="<th>Sacramento</th>";
-      tabla_dinamica+="<th>Descripción</th>";
-      tabla_dinamica+="<th>Fecha de inicio</th>";
-      tabla_dinamica+="<th>Fecha final</th>";
-      tabla_dinamica+="<th>Acciones</th>";
-      tabla_dinamica+="</tr>";
+
       
       var i;
       for(i=0;i<cursos.length;i++)
       {
-        tabla_dinamica+="<tr>";
-        tabla_dinamica+="<td>"+cursos[i].titulo_curso+"</td>";
-        tabla_dinamica+="<td>"+cursos[i].tipo_curso+"</td>";
-        tabla_dinamica+="<td>"+cursos[i].tipo_sacramento+"</td>";
-        tabla_dinamica+="<td>"+cursos[i].descripcion_curso+"</td>";
-        tabla_dinamica+="<td>"+cursos[i].fecha_inicio+"</td>";
-        tabla_dinamica+="<td>"+cursos[i].fecha_final+"</td>";
-       
-        tabla_dinamica+="<td>";
-        tabla_dinamica+="<button class='btn btn-outline-danger btn-lg' onclick=\"eliminar_curso('" +cursos[i].id_curso+ "')\">Eliminar</button>";
-        tabla_dinamica+="<button class='btn btn-outline-success btn-lg' onclick=\"auxiliar_id('" +cursos[i].id_curso+"','"+cursos[i].id_sacramento+"','"+cursos[i].id_tipo_curso+"','"+cursos[i].fecha_inicio+"','"+cursos[i].fecha_final+"','"+cursos[i].descripcion_curso+"','"+cursos[i].titulo_curso+"','"+cursos[i].tipo_curso+"','"+cursos[i].tipo_sacramento+"')\">Editar</button>";
-        tabla_dinamica+="</td>";
-        tabla_dinamica+="</tr>";                                                                                                                                          
+        tabla_dinamica+="<div class='container-evento-boton' onclick=\"auxiliar_id('" +cursos[i].id_curso+"','"+cursos[i].id_sacramento+"','"+cursos[i].id_tipo_curso+"','"+cursos[i].fecha_inicio+"','"+cursos[i].fecha_final+"','"+cursos[i].descripcion_curso+"','"+cursos[i].titulo_curso+"','"+cursos[i].tipo_curso+"','"+cursos[i].tipo_sacramento+"')\">";
+          tabla_dinamica+="<h4>"+cursos[i].titulo_curso+"</h4>";
+          
+          tabla_dinamica+="<div class='container-fecha' >"; 
+            tabla_dinamica+="<p>"+cursos[i].fecha_inicio+"</p>";
+            tabla_dinamica+="<p>"+cursos[i].fecha_final+"</p>";
+          tabla_dinamica+="</div>"; 
+        
+        
+          tabla_dinamica+="<div class = 'container-secundary'>"; 
+            tabla_dinamica+="<p>"+cursos[i].tipo_curso+"</p>";
+            tabla_dinamica+="<p>"+cursos[i].tipo_sacramento+"</p>"
+            tabla_dinamica+="<i class='fa fa-trash eliminar-icon'  onclick=\"eliminar_curso('" +cursos[i].id_curso+ "')\"></i>";
+          tabla_dinamica+="</div>"; 
+        tabla_dinamica+="</div>";                                                                                                                                         
       }
       tabla_dinamica+="</table>";
       $("#tabla_cursos").html(tabla_dinamica);
@@ -461,16 +455,5 @@ function eliminar_curso(id){
 
 }
 
-
-
-
 </script>
-
-<footer>
-</footer>
 </body>
-
-
-
-
-</html>

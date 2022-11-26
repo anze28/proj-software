@@ -10,7 +10,6 @@
             <button class="boton-crear" id = "crear_evento" data-toggle="modal" data-target="#ventanaModal">Crear Evento</button>    
     
         </div>
-<i class="bi bi-trash-fill"></i>
     
         <div class="modal fade" id="ventanaModal" tabindex = "-1" role="dialog" aria-labelledby="tituloventana" area-hidden="true">
             <div class="modal-dialog" role="document">
@@ -56,7 +55,7 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                            <button class="btn btn-danger" type="button" onclick="limpiar_campos()" data-dismiss="modal">Cerrar</button>
+                            <!-- <button class="btn btn-danger" type="button" onclick="limpiar_campos()" data-dismiss="modal">KK</button> -->
                             <button class="btn btn-success" type="button" onclick="limpiar_campos()">Limpiar Campos</button>
                             <button class="btn btn-success" type="button" onclick="modificar_evento()" data-dismiss="modal">Modificar</button>
                             <button class="btn btn-success" type="submit" onclick="validar_guardar()" data-dismiss="modal">Guardar</button>
