@@ -3,12 +3,14 @@
 
     <div class = "container main-container">
         <div class= "container-buscador">
-            <input class="form-control mr-sm-2" type="search" id= "buscar" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success btn-lg" onclick="buscar_evento()">buscar</button>
-            <button class="btn btn-success" id = "crear_evento" data-toggle="modal" data-target="#ventanaModal">Crear Evento</button>    
+            <div class = "search">
+                <input class="input-buscador" type="search" id= "buscar" placeholder="Buscar eventos" aria-label="Search">
+                <button class="btn-buscador" onclick="buscar_evento()"><i class="fa fa-search search-icon "></i></button>
+            </div>
+            <button class="boton-crear" id = "crear_evento" data-toggle="modal" data-target="#ventanaModal">Crear Evento</button>    
     
         </div>
-
+<i class="bi bi-trash-fill"></i>
     
         <div class="modal fade" id="ventanaModal" tabindex = "-1" role="dialog" aria-labelledby="tituloventana" area-hidden="true">
             <div class="modal-dialog" role="document">
@@ -67,7 +69,7 @@
         
     
 
-<div class="container" id="tabla_eventos">
+<div class="container-eventos" id="tabla_eventos">
 </div>
     
 
@@ -166,38 +168,45 @@
             var tabla_dinamica="<table class='table table-striped'>";
             tabla_dinamica+="";
             
-            tabla_dinamica+="<tr>";
+            // tabla_dinamica+="<div>";
             
-            tabla_dinamica+="<th>Titulo</th>";
-            tabla_dinamica+="<th>Tipo</th>";
-            tabla_dinamica+="<th>Fecha de inicio</th>";
-            tabla_dinamica+="<th>Fecha de Finalizacion</th>";
-            tabla_dinamica+="<th>Acciones</th>";
-            tabla_dinamica+="</tr>";
+            // tabla_dinamica+="<p>Titulo</p>";
+            // tabla_dinamica+="<p>Tipo</p>";
+            // tabla_dinamica+="<p>Fecha de inicio</p>";
+            // tabla_dinamica+="<p>Fecha de Finalizacion</p>";
+            // tabla_dinamica+="<p>Acciones</p>";
+            // tabla_dinamica+="</div>";
             
             var i;
             for(i=0;i<eventos.length;i++)
             {
-                tabla_dinamica+="<tr>";
+                tabla_dinamica+="<div class='container-evento-boton' onclick=\"visualizar_evento('" +eventos[i].id_evento+"','"+eventos[i].titulo_evento+"','"+eventos[i].id_tipo_evento+"','"+eventos[i].fecha_inicio+"','"+eventos[i].fecha_finalizacion+"','"+eventos[i].lugar+"','"+eventos[i].descripcion_de_evento+"')\">";
                 
-                tabla_dinamica+="<td>"+eventos[i].titulo_evento+"</td>";
-                if(eventos[i].id_tipo_evento==1)
-                    tabla_dinamica+="<td>"+"Misa"+"</td>";
-                if(eventos[i].id_tipo_evento==2)
-                    tabla_dinamica+="<td>"+"Visita"+"</td>";
-                if(eventos[i].id_tipo_evento==3)
-                    tabla_dinamica+="<td>"+"Viaje"+"</td>";
-                tabla_dinamica+="<td>"+eventos[i].fecha_inicio+"</td>";
-                tabla_dinamica+="<td>"+eventos[i].fecha_finalizacion+"</td>";
-                tabla_dinamica+="<td>";
+                tabla_dinamica+="<h4>"+eventos[i].titulo_evento+"</h4>";
+                tabla_dinamica+="<div class = 'container-primary'>";
+                tabla_dinamica+="<div class='container-fecha' >"; 
+                    tabla_dinamica+="<p>"+eventos[i].fecha_inicio+"</p>";
+                    tabla_dinamica+="<p>"+eventos[i].fecha_finalizacion+"</p>";
+                    tabla_dinamica+="<p>";
+                tabla_dinamica+="</div>";
+
+                tabla_dinamica+="<div class = 'container-secundary'>"; 
+                    if(eventos[i].id_tipo_evento==1)
+                        tabla_dinamica+="<p class='texto-visita'>"+"Misa"+"</p>";
+                    if(eventos[i].id_tipo_evento==2)
+                        tabla_dinamica+="<p class='texto-visita'>"+"Visita"+"</p>";
+                    if(eventos[i].id_tipo_evento==3)
+                        tabla_dinamica+="<p class='texto-visita'> "+"Viaje"+"</p>";
+                    tabla_dinamica+="<i class='fa fa-trash eliminar-icon' onclick=\"eliminar_evento('"+eventos[i].id_evento+"')\"></i>";
+                tabla_dinamica+="</div>";
                 
-                tabla_dinamica+="<button class='btn btn-outline-success btn-lg' onclick=\"visualizar_evento('" +eventos[i].id_evento+"','"+eventos[i].titulo_evento+"','"+eventos[i].id_tipo_evento+"','"+eventos[i].fecha_inicio+"','"+eventos[i].fecha_finalizacion+"','"+eventos[i].lugar+"','"+eventos[i].descripcion_de_evento+"')\">Mas</button>";
-                tabla_dinamica+="<button class='btn btn-outline-danger btn-lg' onclick=\"eliminar_evento('"+eventos[i].id_evento+"')\">Eliminar</button>";
-                
-                tabla_dinamica+="</td>";
-                tabla_dinamica+="</tr>";
+                // tabla_dinamica+="<button class='' onclick=\"visualizar_evento('" +eventos[i].id_evento+"','"+eventos[i].titulo_evento+"','"+eventos[i].id_tipo_evento+"','"+eventos[i].fecha_inicio+"','"+eventos[i].fecha_finalizacion+"','"+eventos[i].lugar+"','"+eventos[i].descripcion_de_evento+"')\">Mas</button>";
+
+    
+                tabla_dinamica+="</div>";
+                tabla_dinamica+="</div>";
             }
-            tabla_dinamica+="</table>";
+           
             $("#tabla_eventos").html(tabla_dinamica);
             
             }

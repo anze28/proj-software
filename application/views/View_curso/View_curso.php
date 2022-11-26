@@ -13,10 +13,7 @@
     
  
 </div>
-<div>
-  <h>
-</h>
-</div>
+
  
 <div class="container" id="tabla_cursos">
 </div>
