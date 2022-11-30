@@ -68,10 +68,11 @@ class Mdl_evento extends CI_MODEL
     {
         $this->db->select('*');
         $this->db->from('p_evento');
-        $this->db->where('id_tipo_evento',$titulo);
+        $this->db->like('titulo_evento',$titulo);
         $this->db->where('borrado','N');
         $query = $this->db->get();
         return $query->result_array();
     }
+
     
 }

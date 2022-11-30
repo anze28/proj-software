@@ -16,7 +16,7 @@
                 <div class = "modal-content">
                     <div class = "modal-header">
                             <h5 id = "tituloventana">Titulo de la ventana modal</h5>
-                            <button class="close" data-dismiss="modal" aria-label="Cerrar"></button>
+                            <button class="close" data-dismiss="modal" aria-label="Cerrar" onclick="limpiar_campos()"></button>
                             <span aria-hidden="true">&times;</span>
                     </div>
                     <div class="modal-body">
@@ -139,7 +139,7 @@
         function limpiar_campos(){
             $("#txb_id_evento").val("");
             $("#txb_titulo").val("");
-            $("#txb_tipo").val("");
+            //$("#txb_tipo").val("");
             $("#txb_fecha_inicio").val("");
             $("#txb_fecha_final").val("");
             $("#txb_lugar").val("");
@@ -226,7 +226,8 @@
             $("#txb_descripcion").val(descripcion);
             $("#crear_evento").click();
         }
-        function buscar_evento(){
+        function buscar_evento()
+        {
             $.ajax({
                 method:"POST",
                 url:"<?php echo site_url("Ctrl_evento/buscar");?>",
@@ -238,7 +239,7 @@
                 },
                 dataType:'json'
             });
-
+            
         }
 
 
