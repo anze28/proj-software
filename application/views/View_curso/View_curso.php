@@ -1,25 +1,25 @@
-
 <input type="hidden" class="form-control" id="txb_id2">
-<form>
+
 
 
 <div class = "container main-container">
         <div class= "container-buscador">
             <div class = "search">
-              <input type="text" class="input-buscador" placeholder="Buscar eventos" id="txb_id_buscar">
+              <input type="text" class="input-buscador" placeholder="Buscar cursos" id="txb_id_buscar">
 
               <button class="btn-buscador" onclick="buscar_curso()"><i class="fa fa-search search-icon "></i></button>
             </div>
-            <td><button type='button' class="boton-crear" data-toggle='modal' data-target='#ventana_actualizar' id="editar_bien">crear curso</button></td>     
+            <td><button type='button' class="boton-crear" data-toggle='modal' data-target='#ventana_actualizar' id="editar_bien">Crear curso</button></td>     
         </div>
 
 <div class = 'modal fade' id = 'ventana_actualizar' tabindex = '-1' role='dialog' aria-labelledby="">
   <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
+
           <h5 class="modal-title" id="exampleModalLiveLabel"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Título modal</font></font></h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">×</font></font></span>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar" onclick="limpiar_campos()">
+          <span aria-hidden="true"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">×</font></font></span>
           </button>
         </div>
         <div class="modal-body">
