@@ -24,6 +24,12 @@ class Mdl_evento extends CI_MODEL
         $this->db->insert('p_evento',$campos);     
     }
 
+    function obtener_tipos_all()
+    {
+        $consulta="Select * from p_tipo_evento where borrado='N';";
+        $resultado= $this->db->query($consulta);
+        return $resultado->result_array();
+    }
 
     function modificar_evento($parametros)
     {

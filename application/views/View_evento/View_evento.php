@@ -31,9 +31,7 @@
                             <div class="form-group">
                                 <label>Tipo de Evento</label>
                                 <select class="form-control " id="txb_tipo">
-                                    <option value="1">Misa</option>
-                                    <option value="2">Visita</option>
-                                    <option value="3">Viaje</option>
+                                    
                                 </select>
                             </div>
                             <div class="form-group">
@@ -77,6 +75,7 @@
 
     <script type="text/javascript">
         listar_eventos();
+        listar_tipos();
 
         function validar_guardar()
         {
@@ -110,6 +109,45 @@
                 window.location.reload();
             },
             });
+        }
+
+        function listar_tipos()
+        {
+        $.ajax({
+            method:"POST",
+            url:"<?php echo site_url("Ctrl_evento/obtener_tipos");?>",
+            data:{
+            },
+            success: function(tipos){
+            crear_tabla_tipo(tipos)
+            },
+            dataType:'json'
+        });
+        }
+
+        function crear_tabla_tipo(tipos)
+        {
+            if(tipos.length >0)
+            {
+            
+            var tabla_dinamica="";
+            var i;
+            for(i=0;i<tipos.length;i++)
+            {
+            
+                tabla_dinamica += "<option value = "+tipos[i].id_tipo_evento+"> "+tipos[i].tipo_evento+" </option>";
+            }
+            tabla_dinamica += "</select>";
+            $("#txb_tipo").html(tabla_dinamica);
+            }   
+            else
+            {
+            {
+                var tabla_dinamica="<option value='0'>No hay tipos de evento creados</option>";
+                tabla_dinamica += "</select>";
+                $("#txb_tipo").html(tabla_dinamica);
+            }
+            }
         }
 
         function modificar_evento(){

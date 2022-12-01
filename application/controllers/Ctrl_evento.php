@@ -108,11 +108,17 @@ class Ctrl_evento extends CI_Controller {
 		$id=$this->input->post('vid');
 		$this->Mdl_evento->eliminar_evento($id);
 	}
+
 	public function buscar()
 	{
 		$titulo=$this->input->post('vtitulo');
 		echo json_encode($this->Mdl_evento->buscar_evento($titulo));
  
+	}
+
+	public function obtener_tipos()
+	{
+		echo json_encode($this->Mdl_evento->obtener_tipos_all());		
 	}
 
 }
