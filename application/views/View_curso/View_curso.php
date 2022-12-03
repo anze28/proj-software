@@ -67,7 +67,7 @@
       
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cerrar</font></font></button>
+          <button type="button" class="btn btn-danger" onclick="limpiar_campos()" data-dismiss="modal"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cerrar</font></font></button>
           <button type="button" class="btn btn-success"  onclick = "guardar_curso();" data-dismiss="modal"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Guardar</font></font></button>
         </div>
       </div>

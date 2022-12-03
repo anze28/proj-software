@@ -179,7 +179,7 @@ function crear_tabla_curso(cursos){
     if(cursos.length >0)
     {
 
-      var tabla_dinamica="<table class='table table-dark table-hover'>";
+    var tabla_dinamica="<table class='table table-hover'>";
       tabla_dinamica+="";
 
       
