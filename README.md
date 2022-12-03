@@ -3,7 +3,7 @@
 
 #### Proyecto de Ingenieria de Software 
 
-
+![App Screenshot](https://github.com/anze28/proj-software/blob/main/imgs/20161118_054114%5B1%5D.jpg)
 
 
 ## Areas de Trabajo
@@ -16,7 +16,6 @@
 
 
 
-
 ## Despliegue
 
 tenemos 2 opciones para tener una copia del proyecto, descargarlo en .zip o con git, en el caso de git hacer lo siguiente: 
@@ -26,7 +25,7 @@ git clone https://github.com/anze28/proj-software.git
 ```
 despues tenemos que instalar la base de datos, usaremos mysql y es necesario generar gredenciales, luego corremos el siguiente script:
 
-[base de datos]()
+[base de datos](https://github.com/anze28/proj-software/blob/main/scriptFinalParroquia.sql)
 
 despues tenemos que modificar las credenciales en [database.php](https://github.com/anze28/proj-software/blob/main/application/config/database.php)
 donde modificaremos username, password, database con nuestros datos de la base datos que tenemos 
@@ -36,12 +35,12 @@ despues nos toca hacer correr el servidor, ponemos en la consola lo siguiente:
 ```bash
 php -S localhost:8080 
 ```
-con eso ya tendriamos inicializado el servidor y en el browser ponemos http://localhost:8080/ y nos cargaria las interfaces correctamente
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-ahora podremos navegar por las otras vistas que son **cursos** y **eventos**
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+con eso ya tendriamos inicializado el servidor y en el browser ponemos http://localhost:8080/ y nos cargaria las interfaces correctamente ahora podremos navegar por las otras vistas que son **cursos** y **eventos**
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](https://github.com/anze28/proj-software/blob/main/imgs/curso.png)
+
+
+![App Screenshot](https://github.com/anze28/proj-software/blob/main/imgs/eventos.png)
 ## Herramientas
 
-**Client:** php, codeigniter, 
+**Client:** php, codeigniter
