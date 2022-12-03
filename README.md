@@ -10,9 +10,9 @@
 
 [Documentation en Notion](https://marble-report-579.notion.site/Software-Engineering-Project-dbdd805d3e2e49be881f7b5cd577b2be)
 
-[Maquetación en Figma](https://marble-report-579.notion.site/Software-Engineering-Project-dbdd805d3e2e49be881f7b5cd577b2be)
+[Maquetación en Figma](https://www.figma.com/file/HELNRkGoCQNRmInMbqPOry/iglecias-proyecto?node-id=0%3A1&t=a4wvowXUdGqu9uFE-0)
 
-[Maquetación en Figma](https://drive.google.com/drive/folders/1Qw2ok0W8TQ_HxIB3ctaFgqLLPisa6p3Q?usp=sharing)
+[Drive](https://drive.google.com/drive/folders/1Qw2ok0W8TQ_HxIB3ctaFgqLLPisa6p3Q?usp=sharing)
 
 
 
