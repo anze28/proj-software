@@ -84,13 +84,13 @@
   <div class="navbar-right">
     <ul>
         <li>
-            <a href="<?php echo site_url("Ctrl_curso/index");?>">Curso</a>
+            <a href="<?php echo site_url("Ctrl_curso/index");?>"><i class="fa fa-calendar "></i>  Curso</a>
         </li>
         <li>
-            <a href="<?php echo site_url("Ctrl_evento/index");?>">Evento</a>
+            <a href="<?php echo site_url("Ctrl_evento/index");?>"><i class="fa fa-bookmark " aria-hidden="true"></i>  Evento</a>
         </li>
         <li>
-            <a class ="boton-login" href="<?php echo site_url("Ctrl_bienvenida/index");?>">Iniciar Sesión</a>
+            <a class ="boton-login" href="<?php echo site_url("Ctrl_bienvenida/index");?>"><i class="fa fa-user" aria-hidden="true"></i>  Iniciar Sesión</a>
         </li>
 
     </ul>

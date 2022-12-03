@@ -102,8 +102,11 @@ h4{
     place-content: center;
     
 }
-.container-evento-boton{
+.hover:hover{
     cursor: pointer;
+}
+.container-evento-boton{
+    /* cursor: pointer; */
     padding:10px;
     border: 5px solid var(--claro);
     border-radius:10px;
@@ -111,7 +114,11 @@ h4{
 .container-primary{
     display: grid;
     grid-template-columns: auto 1fr ;
+    
     margin-top:10px;
+}
+.container-fecha{
+    padding-right:180px;
 }
 .container-secundary{
     display: flex;

@@ -186,23 +186,24 @@ function crear_tabla_curso(cursos){
       var i;
       for(i=0;i<cursos.length;i++)
       {
-        tabla_dinamica+="<div class='container-evento-boton' onclick=\"auxiliar_id('" +cursos[i].id_curso+"','"+cursos[i].id_sacramento+"','"+cursos[i].id_tipo_curso+"','"+cursos[i].fecha_inicio+"','"+cursos[i].fecha_final+"','"+cursos[i].descripcion_curso+"','"+cursos[i].titulo_curso+"','"+cursos[i].tipo_curso+"','"+cursos[i].tipo_sacramento+"')\">";
-          tabla_dinamica+="<h4>"+cursos[i].titulo_curso+"</h4>";
-          
-          tabla_dinamica+="<div class='container-fecha' >"; 
+        tabla_dinamica+="<div class='container-evento-boton' >";
+          tabla_dinamica+="<h4 class= 'hover' onclick=\"auxiliar_id('" +cursos[i].id_curso+"','"+cursos[i].id_sacramento+"','"+cursos[i].id_tipo_curso+"','"+cursos[i].fecha_inicio+"','"+cursos[i].fecha_final+"','"+cursos[i].descripcion_curso+"','"+cursos[i].titulo_curso+"','"+cursos[i].tipo_curso+"','"+cursos[i].tipo_sacramento+"')\">"+cursos[i].titulo_curso+"</h4>";
+          tabla_dinamica+="<div class = 'container-primary'>";
+          tabla_dinamica+="<div class='container-fecha hover' onclick=\"auxiliar_id('" +cursos[i].id_curso+"','"+cursos[i].id_sacramento+"','"+cursos[i].id_tipo_curso+"','"+cursos[i].fecha_inicio+"','"+cursos[i].fecha_final+"','"+cursos[i].descripcion_curso+"','"+cursos[i].titulo_curso+"','"+cursos[i].tipo_curso+"','"+cursos[i].tipo_sacramento+"')\">"; 
             tabla_dinamica+="<p>"+cursos[i].fecha_inicio+"</p>";
             tabla_dinamica+="<p>"+cursos[i].fecha_final+"</p>";
           tabla_dinamica+="</div>"; 
         
         
           tabla_dinamica+="<div class = 'container-secundary'>"; 
-            tabla_dinamica+="<p>"+cursos[i].tipo_curso+"</p>";
-            tabla_dinamica+="<p>"+cursos[i].tipo_sacramento+"</p>"
-            tabla_dinamica+="<i class='fa fa-trash eliminar-icon'  onclick=\"eliminar_curso('" +cursos[i].id_curso+ "')\"></i>";
+            tabla_dinamica+="<p class= 'hover' onclick=\"auxiliar_id('" +cursos[i].id_curso+"','"+cursos[i].id_sacramento+"','"+cursos[i].id_tipo_curso+"','"+cursos[i].fecha_inicio+"','"+cursos[i].fecha_final+"','"+cursos[i].descripcion_curso+"','"+cursos[i].titulo_curso+"','"+cursos[i].tipo_curso+"','"+cursos[i].tipo_sacramento+"')\">"+cursos[i].tipo_curso+"</p>";
+            tabla_dinamica+="<p class= 'hover' onclick=\"auxiliar_id('" +cursos[i].id_curso+"','"+cursos[i].id_sacramento+"','"+cursos[i].id_tipo_curso+"','"+cursos[i].fecha_inicio+"','"+cursos[i].fecha_final+"','"+cursos[i].descripcion_curso+"','"+cursos[i].titulo_curso+"','"+cursos[i].tipo_curso+"','"+cursos[i].tipo_sacramento+"')\">"+cursos[i].tipo_sacramento+"</p>"
+            tabla_dinamica+="<i class='fa fa-trash eliminar-icon hover'  onclick=\"eliminar_curso('" +cursos[i].id_curso+ "')\"></i>";
+          tabla_dinamica+="</div>"; 
           tabla_dinamica+="</div>"; 
         tabla_dinamica+="</div>";                                                                                                                                         
       }
-      tabla_dinamica+="</table>";
+      
       $("#tabla_cursos").html(tabla_dinamica);
       
     }
